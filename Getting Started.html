@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html style="background: #ffffff;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>SimpleNetDocumentation</title>
+    <meta name="description" content="SimpleNet Documentation">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+
+<body style="background: rgb(255,255,255);">
+    <div class="row text-center">
+        <div class="col">
+            <nav class="navbar navbar-light navbar-expand-md">
+                <div class="container-fluid"><a class="navbar-brand" href="#">SimpleNet</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navcol-1">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="NetServerDocs.html">NetServer</a></li>
+                            <li class="nav-item"><a class="nav-link" href="NetClientDocs.html">NetClient</a></li>
+                            <li class="nav-item"><a class="nav-link" href="NetParserDocs.html">NetParser</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <h1>Getting Started</h1>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col">
+            <p><strong>SimpleNet</strong>&nbsp;is a Server-Client based networking library which runs over Unity.<br><br><strong>Setting Up:</strong><br>1.&nbsp; Start by loading the package from the Unity Asset Store:<br><br>2. Go to Edit&gt;Project Settings&gt;Player&gt;Other Settings. <br>Set the Api Compatibility Level to .Net 4.x<br><br><strong>Creating Server:</strong><br>3. Create a new C# script<br><br>4. Change your server script from being derived from <em>MonoBehavior</em> to <em>NetServer</em><br><br></p><img src="assets/img/NetServerDerivation.png">
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col">
+            <p><br>5. Once NetServer is derived, the script's inspector will now include a port number input.</p><img src="assets/img/InspectorNetServer.png">
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col">
+            <p>6. Back inside the Simple Server script, three override methods will be made available:</p><img src="assets/img/SimpleNetServerOverrides.png">
+            <p><strong>OnClientConnected() </strong>takes in a TcpClient object and is automatically run whenever a client connects to the server.</p>
+            <p><strong>OnClientDisconnected()</strong> takes in a TcpClient and netId, and is run every time a client disconnects from the server.<br><em>Do Note however that this method will only run when a client fails to respond to a server message</em><br><br><strong>OnMessageArrive()</strong>&nbsp;takes in a string message and is automatically called everytime a client sends a mesasge to the server.<br><br>7. Finally the NetServer derived class also provides methods which can be called at any time to send messages to the clients.<br><strong>SendAllMessage(string message)</strong>&nbsp;is used to broadcast all users a message.<br><strong>SendDirectMessage(TcpClient client, String message)</strong>&nbsp;sends a message to a specific client.<br><img src="assets/img/NetServerSendMethods.png"><br></p>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col">
+            <p><strong>Creating Client:</strong><br><br>1. Create a new C# script<br>2. Change your server script from&nbsp; being derived by <em>MonoBehavior</em> to <em>NetClient</em><br><img src="assets/img/NetClientDerivation.png"><br><br>3. Similar to the Server script, the script's inspector will now provide a field for ip address and port.<br><img src="assets/img/InspectorNetClient.png"><br><br>4. Back inside the Simple Client script , three override methods will now be made available:<br><img src="assets/img/SimpleNetClientOverrides.png"><br><strong>OnConnectedToServer(int networkId)</strong>&nbsp;is an override method which is automatically run when the client connects to the server.<br><strong>OnMessageReceive(string message)</strong>&nbsp;is automatically run whenever the client receives a message.<br><strong>OnUserDisconnectFromServer(int networkId)</strong>&nbsp;is automatically run whenever a user disconnects from the server<br><em>[Note: This will only occur if the server detects it. Check OnClientDisconnected() docs in NetServer to learn more about it]</em><br><br>5. Finally the NetClient derivated class also provides methods which can be used to send messages to the server.<br><strong>SendNetMessage(string message) </strong>is used to send a message to the server.<br><em>[Note: SendMessage() is a Monobehavior method and cannot be used to send messages to the server]</em><br><br><br><br></p>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+</body>
+
+</html>

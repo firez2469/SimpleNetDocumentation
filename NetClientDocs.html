@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>SimpleNetDocumentation</title>
+    <meta name="description" content="SimpleNet Documentation">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+
+<body>
+    <div class="row text-center">
+        <div class="col">
+            <nav class="navbar navbar-light navbar-expand-md">
+                <div class="container-fluid"><a class="navbar-brand" href="#">SimpleNet</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navcol-1">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link active" href="index.html" style="color: rgba(0,0,0,0.7);">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="NetServerDocs.html">NetServer</a></li>
+                            <li class="nav-item"><a class="nav-link" href="NetClientDocs.html" style="background: #ffffff;color: rgba(0,0,0,0.9);">NetClient</a></li>
+                            <li class="nav-item"><a class="nav-link" href="NetParserDocs.html">NetParser</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row" style="transform: translate(69px);">
+        <div class="col">
+            <p><strong>Classes:</strong></p>
+            <p style="text-align: left;">&nbsp;- <strong>void BeginClient() </strong><em>Starts the client.&nbsp;</em><br>- <strong>void SendNetMessage(string message) </strong><em>Sends message to the connected server.</em><br><em>Parameters:</em><br><em>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;- string: message being sent.</em><br><br><strong>- virtual void OnMessageReceive(string message)&nbsp;<em>&nbsp;</em></strong><em>Method is meant to be overridden in derived class. Is run when the client receives a message.</em><br><strong>- virtual void OnConnectedToServer()</strong>&nbsp;<em>Method is meant to be overridden in derived class. Is run when client connects to the Server.</em><br><strong>- virtual void OnUserDisconnectedFromServer(int networkid)</strong>&nbsp;<em>Method is meant to be overridden in derived class. Is run when a Client fails to receive a message sent</em><br><em>by the server&nbsp;</em>due to connection loss.<br><br><strong>- void Disconnect()</strong>&nbsp;<em>Disconnects from the server.</em><br><br><br></p>
+        </div>
+    </div>
+    <div class="row" style="transform: translate(69px);">
+        <div class="col">
+            <p><strong>Public Fields:</strong><br><strong>- int&nbsp;<em>&nbsp;port&nbsp;</em></strong><em>&nbsp;</em>The port number the server listens to.<br><strong>- string ipAddress </strong>The Ip Address the client is trying to connect to.<br><strong>- bool <em>debug</em></strong>&nbsp;If debug messages should be displayed.<br><strong>- bool initializedOnNetwork </strong>States whether the client has been assigned a netId by the server.<br><strong>- int networkId</strong>&nbsp;The Network Id assigned by the server.<br><strong>- bool <em>beginClientOnStart</em></strong><em>&nbsp;Boolean which determines whether the server should start the moment the object is enabled.</em></p>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+</body>
+
+</html>
